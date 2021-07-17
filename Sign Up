@@ -1,0 +1,76 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+
+void main() {
+  runApp(MaterialApp(
+    home: Home(),
+  ));
+}
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late TextEditingController _controller;
+  @override
+  void initState(){
+    super.initState();
+    _controller = TextEditingController();
+  }
+  @override
+  void dispose(){
+    _controller.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Event - Manager'),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 20.0,),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Name',
+            ),
+          ),
+          //SizedBox(height: 10.0,),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'example@email.com',
+            ),
+          ),
+          //SizedBox(height: 10.0,),
+          TextField(
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Enter Password',
+            ),
+          ),
+          SizedBox(height: 60.0,),
+          RaisedButton(
+            onPressed:(){},
+            color: Colors.blue,
+            child: Text('Login'),
+          ),
+        ],
+      ),
+    );
+  }
+}
